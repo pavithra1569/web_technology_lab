@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="signup-box">
+    <div class="left-panel"></div>
+    <div class="right-panel">
+      <h2>Create an Account</h2>
+      <form #form="ngForm" (ngSubmit)="onSignup(form)">
+  <div>
+    <label>Name:</label>
+    <input
+      type="text"
+      name="name"
+      [(ngModel)]="signupData.name"
+      required
+      minlength="3"
+      #name="ngModel"
+    />
+    <div *ngIf="name.invalid && name.touched" style="color: red;">
+      Name must be at least 3 characters.
+    </div>
+  </div>
+
+  <div>
+    <label>Email:</label>
+    <input
+      type="email"
+      name="email"
+      [(ngModel)]="signupData.email"
+      required
+      email
+      #email="ngModel"
+    />
+    <div *ngIf="email.invalid && email.touched" style="color: red;">
+      Please enter a valid email.
+    </div>
+  </div>
+
+  <div>
+    <label>Password:</label>
+    <input
+      type="password"
+      name="password"
+      [(ngModel)]="signupData.password"
+      required
+      minlength="8"
+      #password="ngModel"
+    />
+    <div *ngIf="password.invalid && password.touched" style="color: red;">
+      Password must be at least 8 characters.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="form.invalid" class="signup-btn">Sign Up</button>
+  <button type="button" (click)="goToHome()" class="home-btn">Go to Home</button>
+</form>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="search-container">
+  <input
+    type="text"
+    placeholder="Search artworks..."
+    (keyup)="filterArt($event)"
+    class="search-bar"
+  >
+  <button type="button" class="view-cart" (click)="showCart()">
+    View Cart
+  </button>
+  <button type="button" class="view-fav" (click)="showFavorites()">
+    View Favorites
+  </button>
+</div>
+
+<div *ngIf="showBackButton">
+  <button (click)="resetGallery()">Back to Gallery</button>
+</div>
+
+<div class="gallery">
+  <div class="art-piece" *ngFor="let item of filteredImages">
+    <img [src]="item.src" [alt]="item.title"/>
+    <h3 class="art-title">{{ item.title }}</h3>
+    <button
+      type="button"
+      class="cart"
+      (click)="addToCart(item.title)"
+    >
+      {{ cart.includes(item.title) ? 'Remove from Cart' : 'Add to Cart' }}
+    </button>
+    <button
+      type="button"
+      class="fav"
+      (click)="addToFavorites(item.title)"
+    >
+      {{ favorites.includes(item.title) ? '🎉 Loved!' : '💖 Favorite' }}
+    </button>
+  </div>
+</div>

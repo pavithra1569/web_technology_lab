@@ -1,0 +1,36 @@
+<!-- Navbar -->
+<nav>
+  <h1>ABI Art Gallery</h1>
+  <ul>
+    <button  class="go-gallery-btn" (click)="goToGallery()">Gallery</button>
+    <button class="go-login-btn" (click)="goToLogin()">Login</button>
+    <button class="go-signup-btn" (click)="goToSignup()">Sign Up</button>
+  </ul>
+</nav>
+  <!-- Banner Section -->
+  <section class="banner">
+    <h2>Welcome to ABI Art Gallery</h2>
+    <p>"Where Creativity Meets Passion"</p>
+  </section>
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery">
+    <img src="assets/images/image1.jpg" alt="Gallery Image 1">
+    <img src="assets/images/image2.jpg" alt="Gallery Image 2">
+    <img src="assets/images/image3.jpg" alt="Gallery Image 3">
+  </section>
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h3>About ABI Art Gallery</h3>
+    <p>
+      Discover the finest art collections and experience masterpieces from renowned artists around the world. ABI Art Gallery brings creativity and passion together to showcase extraordinary works of art that inspire and captivate.
+    </p>
+  </section>
+  <!-- Footer -->
+  <footer>
+    <div class="links">
+      <button (click)="goToGallery()">Gallery</button>
+      <button (click)="goToLogin()">Login</button>
+      <button (click)="goToSignup()">Sign Up</button>
+    </div>
+    <p>&copy; 2025 ABI Art Gallery. All rights reserved.</p>
+  </footer>
