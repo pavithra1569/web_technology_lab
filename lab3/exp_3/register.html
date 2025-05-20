@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #3a1c71, #d76d77, #ffaf7b);
+        }
+        .container {
+            display: flex;
+            width: 850px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        .left-panel {
+            flex: 1;
+            background: url("form1.jpg") center/cover;
+            position: relative;
+            border-radius: 10px 0 0 10px;
+        }
+        .right-panel {
+            flex: 1;
+            padding: 40px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        .reset-btn, .submit-btn {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .submit-btn {
+            background: #007bff;
+            color: white;
+        }
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+        .reset-btn {
+            background: #ccc;
+            color: black;
+        }
+        .home-btn {
+    background: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.home-btn:hover {
+    background: #5a6268;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel"></div>
+        <div class="right-panel">
+            <h2>Registration</h2>
+            <form id="registrationForm">
+                <input type="text" id="username" placeholder="Username *" required  autocomplete="off">
+                <input type="password" id="password" placeholder="Password *" required autocomplete="new-password">
+                <input type="text" id="fullName" placeholder="Full Name *" required>
+                <input type="email" id="email" placeholder="Email *" required>
+                <input type="tel" id="phoneNumber" placeholder="Phone Number *" required>
+                <input type="date" id="dob" required>
+                <input type="text" id="address" placeholder="Address *" required>
+                <input type="text" id="city" placeholder="City *" required>
+                <input type="text" id="state" placeholder="State *" required>
+                <input type="text" id="zipCode" placeholder="Zip Code *" required>
+                <input type="text" id="country" placeholder="Country *" required>
+                <select id="art-style" required>
+                    <option value="">Preferred Art Style *</option>
+                    <option value="abstract">Abstract</option>
+                    <option value="realism">Realism</option>
+                    <option value="impressionism">Impressionism</option>
+                    <option value="surrealism">Surrealism</option>
+                </select>
+                <div class="buttons">
+                    <button type="submit" class="submit-btn">Submit</button>
+                    <button type="reset" class="reset-btn">Reset</button>
+                    <button type="button" class="home-btn" onclick="goToHome()">Home</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function goToHome() {
+        window.location.href = "index.html"; // Replace "index.html" with your actual home page URL
+    }
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let username = document.getElementById("username").value.trim();
+            let password = document.getElementById("password").value.trim();
+            let fullName = document.getElementById("fullName").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let phoneNumber = document.getElementById("phoneNumber").value.trim();
+            let dob = document.getElementById("dob").value;
+            let zipCode = document.getElementById("zipCode").value.trim();
+            if (username.length < 5) {
+                alert("Username must be at least 5 characters.");
+                return;
+            }
+            if (!/^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{8,}$/.test(password)) {
+                alert("Password must be at least 8 characters long and include both letters and numbers.");
+                return;
+            }
+            if (!/^\S+@\S+\.\S+$/.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+            if (!/^\d{10}$/.test(phoneNumber)) {
+                alert("Phone number must be 10 digits.");
+                return;
+            }
+            if (new Date(dob) > new Date()) {
+                alert("Date of birth cannot be in the future.");
+                return;
+            }
+            if (!/^\d{5,6}$/.test(zipCode)) {
+                alert("Zip Code must be 5 or 6 digits.");
+                return;
+            }
+            alert("Registration successful!");
+            this.reset();
+         
+        });
+    </script>
+</body>
+</html>
